@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title id="title"></title>
+    <style>
+        html,
+        body{
+            margin: 0;
+            overflow: hidden
+        }
+        #body{
+            max-width:500px;
+            margin: 0 auto;
+            border-left: 1px solid #CCC;
+            border-right: 1px solid #CCC;
+        }
+    </style>
+</head>
+<body>
+	<div id="body">
+        <carousel :data="panes"></carousel>
+	</div>
+
+    <script>
+        (function() {
+            var body = document.getElementById('page-body');
+            var loading = document.createElement("div");
+
+            if (!body) return;
+            body.style.display = 'none';
+            loading.id = 'page-loading';
+            loading.innerHTML = '\<div class="page-loading-icon">\
+                    <div class="rect1"></div>\
+                    <div class="rect2"></div>\
+                    <div class="rect3"></div>\
+                    <div class="rect4"></div>\
+                    <div class="rect5"></div>\
+                </div>';
+            document.body.appendChild(loading);
+        }());
+    </script>
+</body>
+</html>
