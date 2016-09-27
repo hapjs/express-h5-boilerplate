@@ -1,31 +1,6 @@
-var moment = require('moment');
-var tools = require('../tools');
-var user = require('../entity/user.js');
-
-function xx() {
-	this.starttime = new Date().getTime();
-	this.end = function(data) {
-		return {
-			time: (new Date().getTime() - this.starttime),
-			length: data.length,
-			data: data
-		};
-	}.bind(this)
-};
-
-
 
 module.exports = {
-
-	'/params2array': function(req, res){
-		var params = {
-			name: 'a,b,c',
-			age: '1,2,3'
-		};
-
-		this.success(res, tools.params2array(params));
-	},
-
+	
 	'/updateRow': function(req, res, params, opt) {
 		this.updateRow({
 			res: res,
@@ -133,7 +108,6 @@ module.exports = {
 		// xx ---> yy
 		this.run('test/yy', req, res, params, {
 			success: function(data){
-
 				/* 输出结果
 				{
 				  "code": 0,
@@ -156,17 +130,4 @@ module.exports = {
 		});
 	}
 
-};
-
-
-// 时间转换成数字
-var datetime2Number = function(dt) {
-	var num = 0;
-
-	if (moment.isDate(dt)) {
-		num = moment(dt).format('HHmmssSSS');
-		num = parseInt(num, 10);
-	};
-
-	return num;
 };
