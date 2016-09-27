@@ -5,7 +5,6 @@ var session = require('express-session');
 var argv = require('yargs').argv;
 var config = require('../config');
 var util = require('./util');
-var rawBodyParser = require('./util/raw-body-parser');
 var serveStatic = require('./util/serve-static');
 var port = argv.p || config.port || 3000;
 var app = express();
@@ -18,9 +17,6 @@ app.use(session({
     saveUninitialized: true,
     maxAge: MINUTE*30
 }));
-
-// raw body
-app.use(rawBodyParser());
 
 // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
